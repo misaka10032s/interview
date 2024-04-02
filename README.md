@@ -39,3 +39,14 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+
+
+### if quasar command not found
+```bash
+npm install -g @quasar/cli
+```
+
+### sweetalert2
+```bash
+npm i sweetalert2@11
+```
