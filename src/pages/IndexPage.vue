@@ -15,14 +15,15 @@
                 <q-btn @click="deleteData">delete</q-btn>
             </div>
 
+            <!-- 7. 表格排序和篩選功能  -->
             <div class="q-mb-xl">
-                <q-btn :color="filterAge == 50 ? 'primary' : 'secondary'" @click="filterAge = filterAge == 50 ? 0 : 50">小於50歲</q-btn>
+                <q-btn :color="filterAge == 50 ? 'primary' : 'secondary'" @click="filterAge = filterAge == 50 ? Infinity : 50">小於50歲</q-btn>
             </div>
 
             <q-table flat bordered ref="tableRef" :rows="filteredData" :columns="(tableConfig as QTableProps['columns'])" row-key="id" hide-pagination separator="cell" :rows-per-page-options="[0]">
                 <template v-slot:header="props">
                     <q-tr :props="props">
-                        <q-th v-for="col in props.cols" :key="col.name" :props="props" @click="sort(col.field)">
+                        <q-th v-for="col in props.cols" :key="col.name" :props="props" @click="sort(col.field)" style="cursor: pointer;">
                             {{ col.label }}
                             <q-icon v-if="sortBy.key === col.field" :name="`arrow_${sortBy.order === 'asc' ? 'upward' : 'downward'}`" />
                         </q-th>
@@ -84,7 +85,7 @@ const sort = key => {
     }
 };
 const sortBy = ref({ key: '', order: '' });
-const filterAge = ref(50);
+const filterAge = ref(Infinity);
 
 const blockData = ref([
     {
